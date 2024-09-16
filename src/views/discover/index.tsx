@@ -1,12 +1,13 @@
-import React, { memo } from 'react'
+import React, { memo, Suspense } from 'react'
 import type { FC, ReactNode } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Outlet } from 'react-router-dom'
 
 interface IProps {
   children?: ReactNode
 }
 
 const Discover: FC<IProps> = () => {
+  console.log('c-views')
   return (
     <div>
       <div>
@@ -15,6 +16,9 @@ const Discover: FC<IProps> = () => {
         <Link to="/discover/songs">歌单</Link>
         <Link to="/discover/artist">主播电台</Link>
         <Link to="/discover/album">新碟上架</Link>
+        <Suspense fallback="">
+          <Outlet />
+        </Suspense>
       </div>
     </div>
   )
