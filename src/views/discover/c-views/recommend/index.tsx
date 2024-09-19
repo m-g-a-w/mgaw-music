@@ -1,40 +1,21 @@
-import React, { memo, useState, useEffect } from 'react'
+import { useAppDispatch } from '@/store'
+import React, { memo, useEffect } from 'react'
 import type { FC, ReactNode } from 'react'
-import hyRequest from '@/service'
-
+import { fetchBannerDataAction } from './store/recommend'
+import TopBanner from './c-cpns/TopBanner'
 interface IProps {
   children?: ReactNode
 }
-export interface IBannerData {
-  imageUrl: string
-  targetId: number
-  targetType: number
-  titleColor: string
-  typeTitle: string
-  url?: string
-  exclusive: boolean
-  scm: string
-  bannerBizType: string
-}
 
 const Recommend: FC<IProps> = () => {
-  const [banners, setBanners] = useState<IBannerData[]>([])
-  //测试网络请求
+  const dispatch = useAppDispatch()
   useEffect(() => {
-    hyRequest
-      .get({
-        url: '/banner'
-      })
-      .then((res) => {
-        console.log(res, 'banner')
-        setBanners(res.banners)
-      })
+    dispatch(fetchBannerDataAction())
   }, [])
   return (
     <div>
-      {banners.map((item, index) => {
-        return <div key={index}>{item.imageUrl}</div>
-      })}
+      <TopBanner />
+      recommend
     </div>
   )
 }

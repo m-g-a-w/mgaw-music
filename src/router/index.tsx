@@ -9,7 +9,7 @@ const Download = lazy(() => import('@/views/download'))
 const Artist = lazy(() => import('@/views/discover/c-views/artist'))
 const Djradio = lazy(() => import('@/views/discover/c-views/djradio'))
 const Ranking = lazy(() => import('@/views/discover/c-views/ranking'))
-const Recommend = lazy(() => import('@/views/discover/c-views/recommend'))
+const Recommend = lazy(() => import('@/views/discover/c-views/recommend/index'))
 const Songs = lazy(() => import('@/views/discover/c-views/songs'))
 const Album = lazy(() => import('@/views/discover/c-views/album'))
 
