@@ -28,7 +28,7 @@ const TopBanner: FC<IProps> = () => {
     setCurrentIndex(current)
   }
   let bgImageUrl
-  if (currentIndex >= 0 && banners.length > 0) {
+  if (currentIndex >= 0 && banners && banners.length > 0) {
     bgImageUrl = banners[currentIndex].imageUrl + '?imageView&blur=40x20'
   }
   function handlePreClick() {
