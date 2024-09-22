@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { getBanners, getHotRecommend } from '../service/recommend'
+import { getBanners, getHotRecommend, getNewAlbum } from '../service/recommend'
 
 export const fetchBannerDataAction = createAsyncThunk(
   'banners',
@@ -12,17 +12,25 @@ export const fetchHotRecommendAction = createAsyncThunk(
   'hotRecommend',
   async (arg, { dispatch }) => {
     const res = await getHotRecommend(8)
-    console.log(res)
     dispatch(changeHotRecommendAction(res.result))
+  }
+)
+export const fetchNewAlbumAction = createAsyncThunk(
+  'newAlbum',
+  async (arg, { dispatch }) => {
+    const res = await getNewAlbum()
+    dispatch(changeNewAlbumAction(res.albums))
   }
 )
 interface IRecommendState {
   banners: any[]
   hotRecommends: any[]
+  newAlbums: any[]
 }
 const initialState: IRecommendState = {
   banners: [],
-  hotRecommends: []
+  hotRecommends: [],
+  newAlbums: []
 }
 const recommendSlice = createSlice({
   name: 'recommend',
@@ -33,21 +41,15 @@ const recommendSlice = createSlice({
     },
     changeHotRecommendAction(state, { payload }) {
       state.hotRecommends = payload
+    },
+    changeNewAlbumAction(state, { payload }) {
+      state.newAlbums = payload
     }
   }
-  // extraReducers: (builder) => {
-  //   builder
-  //     .addCase(fetchBannerDataAction.pending, (state, action) => {
-  //       console.log('pending')
-  //     })
-  //     .addCase(fetchBannerDataAction.fulfilled, (state, { payload }) => {
-  //       state.banners = payload
-  //     })
-  //     .addCase(fetchBannerDataAction.rejected, (state, action) => {
-  //       console.log('rejected')
-  //     })
-  //    }
 })
-export const { changeBannerAction, changeHotRecommendAction } =
-  recommendSlice.actions
+export const {
+  changeBannerAction,
+  changeHotRecommendAction,
+  changeNewAlbumAction
+} = recommendSlice.actions
 export default recommendSlice.reducer
