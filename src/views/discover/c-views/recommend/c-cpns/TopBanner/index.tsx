@@ -2,7 +2,6 @@ import React, { memo, useRef, useState } from 'react'
 import type { FC, ReactNode, ElementRef } from 'react'
 import { shallowEqual } from 'react-redux'
 import { Carousel } from 'antd'
-import { current } from '@reduxjs/toolkit'
 import classNames from 'classnames'
 
 import { BannerWrapper, BannerLeft, BannerRight, BannerControl } from './style'
