@@ -26,3 +26,9 @@ export function getPlayListDetail(id: number) {
     }
   })
 }
+export function getArtistList(limit = 5) {
+  return hyRequest.get({
+    url: '/artist/list',
+    params: { limit }
+  })
+}
