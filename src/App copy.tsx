@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react'
 import { useRoutes } from 'react-router-dom'
-import { useAppSelector, useAppDispatch, useShallowEqualApp } from './store'
+import { useAppSelector, useAppDispatch, shallowEqualApp } from './store'
 
 import routes from './router'
 import { changeMessage } from './store/modules/counter'
@@ -12,7 +12,7 @@ function App() {
       count: state.counter.count,
       message: state.counter.message
     }),
-    useShallowEqualApp
+    shallowEqualApp
   )
   // 事件处理函数
   const dispatch = useAppDispatch()

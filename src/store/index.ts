@@ -8,19 +8,26 @@ import {
 
 import counterReducer from './modules/counter'
 import recommendReducer from '../views/discover/c-views/recommend/store/recommend'
+import playerReducer from '../views/player/store/player'
+
 const store = configureStore({
   reducer: {
     counter: counterReducer,
-    recommend: recommendReducer
+    recommend: recommendReducer,
+    player: playerReducer
   }
 })
 
+// const state = store.getState()
+// type StateType = typeof state
+
 type GetStateFnType = typeof store.getState
-type IRootState = ReturnType<GetStateFnType>
+export type IRootState = ReturnType<GetStateFnType>
 type DispatchType = typeof store.dispatch
 
+// useAppSelector的hook
 export const useAppSelector: TypedUseSelectorHook<IRootState> = useSelector
 export const useAppDispatch: () => DispatchType = useDispatch
-export const useShallowEqualApp = shallowEqual
+export const shallowEqualApp = shallowEqual
 
 export default store
