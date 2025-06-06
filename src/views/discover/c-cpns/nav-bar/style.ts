@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const NavWrapper = styled.div`
   height: 30px;
-  background-color: ${(props) => props.theme.color.primary};
+  background-color: #C20C0C;
 
   .nav {
     display: flex;
@@ -22,7 +22,6 @@ export const NavWrapper = styled.div`
 
         &:hover,
         &.active {
-          text-decoration: none;
           background-color: #9b0909;
           border-radius: 20px;
         }
